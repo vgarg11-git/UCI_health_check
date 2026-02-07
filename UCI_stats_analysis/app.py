@@ -25,7 +25,7 @@ if uploaded_file:
         if model_choice == "Logistic Regression":
             model, metrics = logistic_regression.run_logistic_regression(df, target)
         elif model_choice == "Decision Tree":
-            model, metrics = decision_tree.run_decision_tree(df, target)
+            model, metrics, X, y = decision_tree.run_decision_tree(df, target)
         elif model_choice == "kNN":
             model, metrics = knn.run_knn(df, target)
         elif model_choice == "Naive Bayes":
@@ -54,4 +54,5 @@ if uploaded_file:
 
         st.write("### Classification Report")
         report = classification_report(y, y_pred, output_dict=False)
+
         st.text(report)
