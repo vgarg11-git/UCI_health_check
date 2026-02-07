@@ -4,6 +4,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix, classification_report
 from model import logistic_regression, decision_tree, knn, naive_bayes, random_forest, xgboost_model
+from utils import preprocess
 
 st.title("ML Assignment 2 - Classification Models")
 
@@ -57,4 +58,5 @@ if uploaded_file:
         report = classification_report(y, y_pred, output_dict=False)
 
         st.text(report)
+
 
