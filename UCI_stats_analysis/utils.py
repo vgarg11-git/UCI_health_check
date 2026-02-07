@@ -1,6 +1,12 @@
 import pandas as pd
 from sklearn.metrics import accuracy_score, roc_auc_score, precision_score, recall_score, f1_score, matthews_corrcoef
 
+def preprocess(df, target):
+    # One-hot encode categorical features
+    X = pd.get_dummies(df.drop(columns=[target]), drop_first=True)
+    y = df[target]
+    return X, y
+
 def evaluate_model(model, X_test, y_test):
     y_pred = model.predict(X_test)
     y_prob = None
@@ -30,4 +36,5 @@ def evaluate_model(model, X_test, y_test):
             metrics["AUC"] = None  # fallback if computation fails
 
     return metrics
+
 
