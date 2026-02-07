@@ -17,4 +17,17 @@ def evaluate_model(model, X_test, y_test):
         "MCC": matthews_corrcoef(y_test, y_pred),
         "AUC": roc_auc_score(y_test, y_prob) if y_prob is not None else None
     }
+
+    # Handle AUC for binary vs multi-class
+    if y_prob is not None:
+        try:
+            if len(set(y_test)) > 2:
+                metrics["AUC"] = roc_auc_score(y_test, y_prob, multi_class="ovr", average="weighted")
+            else:
+                metrics["AUC"] = roc_auc_score(y_test, y_prob[:,1])
+        except:
+            metrics["AUC"] = None
+    else:
+        metrics["AUC"] = None
+
     return metrics
