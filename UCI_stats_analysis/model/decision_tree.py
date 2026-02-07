@@ -16,6 +16,7 @@ def run_decision_tree(df, target):
 
     metrics = evaluate_model(model, X_test, y_test)
 
-    return model, metrics, X, y
+    return model, metrics
+
 
 
