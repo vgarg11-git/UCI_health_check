@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
-from utils import evaluate_model
+from utils import evaluate_model, preprocess
 
 def run_decision_tree(df, target):
    # One-hot encode categorical features
@@ -16,3 +16,4 @@ def run_decision_tree(df, target):
     metrics = evaluate_model(model, X_test, y_test)
 
     return model, metrics
+
