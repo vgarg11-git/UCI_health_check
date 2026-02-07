@@ -15,19 +15,19 @@ def evaluate_model(model, X_test, y_test):
         "Recall": recall_score(y_test, y_pred, average="weighted"),
         "F1": f1_score(y_test, y_pred, average="weighted"),
         "MCC": matthews_corrcoef(y_test, y_pred),
-        "AUC": roc_auc_score(y_test, y_prob) if y_prob is not None else None
+        "AUC": None
+        #"AUC": roc_auc_score(y_test, y_prob) if y_prob is not None else None
     }
 
-    # Handle AUC for binary vs multi-class
+    # Handle AUC safely
     if y_prob is not None:
         try:
-            if len(set(y_test)) > 2:
+            if len(set(y_test)) > 2:  # multi-class case
                 metrics["AUC"] = roc_auc_score(y_test, y_prob, multi_class="ovr", average="weighted")
-            else:
-                metrics["AUC"] = roc_auc_score(y_test, y_prob[:,1])
-        except:
-            metrics["AUC"] = None
-    else:
-        metrics["AUC"] = None
+            else:  # binary case
+                metrics["AUC"] = roc_auc_score(y_test, y_prob[:, 1])
+        except Exception as e:
+            metrics["AUC"] = None  # fallback if computation fails
 
     return metrics
+
