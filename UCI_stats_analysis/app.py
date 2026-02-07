@@ -27,7 +27,6 @@ if uploaded_file:
             model, metrics = logistic_regression.run_logistic_regression(df, target)
         elif model_choice == "Decision Tree":
             model, metrics = decision_tree.run_decision_tree(df, target)
-            X, y = preprocess(df, target)
         elif model_choice == "kNN":
             model, metrics = knn.run_knn(df, target)
         elif model_choice == "Naive Bayes":
@@ -45,7 +44,7 @@ if uploaded_file:
         st.write("### Confusion Matrix")
         X = df.drop(columns=[target])
         y = df[target]
-        y_pred = model.predict(X)
+        y_pred = model.predict(X_test)
 
         cm = confusion_matrix(y, y_pred)
         fig, ax = plt.subplots()
@@ -58,5 +57,6 @@ if uploaded_file:
         report = classification_report(y, y_pred, output_dict=False)
 
         st.text(report)
+
 
 
