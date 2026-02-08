@@ -17,7 +17,7 @@ def preprocess(df, target):
 
     # One-hot encode categorical features
     X = pd.get_dummies(df.drop(columns=[target]), drop_first=True)
-    y = df[target]
+    y = df[target].astype(int)
 
     return X, y
 
@@ -51,6 +51,7 @@ def evaluate_model(model, X_test, y_test):
             metrics["AUC"] = None  # fallback if computation fails
 
     return metrics
+
 
 
 
