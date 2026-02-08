@@ -45,6 +45,8 @@ if uploaded_file:
         X = df.drop(columns=[target])
         y = df[target]
         y_pred = model.predict(X_test)
+        cm = confusion_matrix(y_test, y_pred)
+
 
         cm = confusion_matrix(y, y_pred)
         fig, ax = plt.subplots()
@@ -57,6 +59,7 @@ if uploaded_file:
         report = classification_report(y, y_pred, output_dict=False)
 
         st.text(report)
+
 
 
 
