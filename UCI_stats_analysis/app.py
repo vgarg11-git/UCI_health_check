@@ -48,7 +48,7 @@ if uploaded_file:
         cm = confusion_matrix(y_test, y_pred)
 
 
-        cm = confusion_matrix(y, y_pred)
+        #cm = confusion_matrix(y, y_pred)
         fig, ax = plt.subplots()
         sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", ax=ax)
         ax.set_xlabel("Predicted")
@@ -59,6 +59,7 @@ if uploaded_file:
         report = classification_report(y, y_pred, output_dict=False)
 
         st.text(report)
+
 
 
 
