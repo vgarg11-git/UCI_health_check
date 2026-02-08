@@ -19,7 +19,7 @@ def preprocess(df, target):
     X = pd.get_dummies(df.drop(columns=[target]), drop_first=True)
     # Clean target column safely
     y = pd.to_numeric(df[target], errors="coerce")   # convert to numeric, invalid → NaN
-    y = y.dropna().astype(int)                       # drop NaN, cast to int
+    y = y.fillna(0).astype(int)                       # drop NaN, cast to int
 
     # Align X with y (drop rows where target was NaN)
     X = X.loc[y.index]
@@ -56,6 +56,7 @@ def evaluate_model(model, X_test, y_test):
             metrics["AUC"] = None  # fallback if computation fails
 
     return metrics
+
 
 
 
