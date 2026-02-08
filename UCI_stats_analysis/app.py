@@ -24,7 +24,7 @@ if uploaded_file:
 
     if st.button("Run Model"):
         if model_choice == "Logistic Regression":
-            model, metrics = logistic_regression.run_logistic_regression(df, target)
+            model, metrics,  X_test, y_test = logistic_regression.run_logistic_regression(df, target)
         elif model_choice == "Decision Tree":
             model, metrics, X_test, y_test = decision_tree.run_decision_tree(df, target)
         elif model_choice == "kNN":
@@ -60,6 +60,7 @@ if uploaded_file:
         report = classification_report(y_test, y_pred)
 
         st.text(report)
+
 
 
 
