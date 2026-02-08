@@ -2,10 +2,25 @@ import pandas as pd
 from sklearn.metrics import accuracy_score, roc_auc_score, precision_score, recall_score, f1_score, matthews_corrcoef
 
 def preprocess(df, target):
+    # Replace '?' with NaN
+    df = df.replace("?", pd.NA)
+
+    # Convert all columns to numeric where possible
+    df = df.apply(pd.to_numeric, errors="ignore")
+
+    # Fill NaN values (simple strategy: median for numeric, mode for categorical)
+    for col in df.columns:
+        if df[col].dtype.kind in "biufc":  # numeric
+            df[col] = df[col].fillna(df[col].median())
+        else:  # categorical
+            df[col] = df[col].fillna(df[col].mode()[0])
+
     # One-hot encode categorical features
     X = pd.get_dummies(df.drop(columns=[target]), drop_first=True)
     y = df[target]
+
     return X, y
+
 
 def evaluate_model(model, X_test, y_test):
     y_pred = model.predict(X_test)
@@ -36,5 +51,6 @@ def evaluate_model(model, X_test, y_test):
             metrics["AUC"] = None  # fallback if computation fails
 
     return metrics
+
 
 
