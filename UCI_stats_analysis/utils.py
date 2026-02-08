@@ -17,7 +17,10 @@ def preprocess(df, target):
 
     # One-hot encode categorical features
     X = pd.get_dummies(df.drop(columns=[target]), drop_first=True)
-    y = df[target].astype(int)
+    y = df[target].dropna().astype(int)
+
+    # Align X with y (drop rows where target was NaN)
+    X = X.loc[y.index]
 
     return X, y
 
@@ -51,6 +54,7 @@ def evaluate_model(model, X_test, y_test):
             metrics["AUC"] = None  # fallback if computation fails
 
     return metrics
+
 
 
 
