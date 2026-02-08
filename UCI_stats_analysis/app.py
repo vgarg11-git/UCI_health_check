@@ -56,9 +56,11 @@ if uploaded_file:
         st.pyplot(fig)
 
         st.write("### Classification Report")
-        report = classification_report(y, y_pred, output_dict=False)
+        #report = classification_report(y, y_pred, output_dict=False)
+        report = classification_report(y_test, y_pred)
 
         st.text(report)
+
 
 
 
