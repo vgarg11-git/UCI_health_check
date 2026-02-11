@@ -19,18 +19,18 @@ Chosen dataset: UCI Heart Disease Dataset
 ## Evaluation Metrics
 | Model | Accuracy | AUC | Precision | Recall | F1 | MCC |
 |-------|----------|-----|-----------|--------|----|-----|
-| Logistic Regression |   |   |   |   |   |   |
-| Decision Tree       |   |   |   |   |   |   |
-| kNN                 |   |   |   |   |   |   |
-| Naive Bayes         |   |   |   |   |   |   |
-| Random Forest       |   |   |   |   |   |   |
-| XGBoost             |   |   |   |   |   |   |
+| Logistic Regression | 0.57  |0.50   | 0.57  | 0.53  |0.37   |  NULL |
+| Decision Tree       | 0.59  |0.52   | 0.59  | 0.54  |0.40   | NULL  |
+| kNN                 | 0.53  |0.46   | 0.53  | 0.47  |0.30   | NULL  |
+| Naive Bayes         | 0.47  |0.69   | 0.47  | 0.51  |0.36   | NULL  |
+| Random Forest       | 0.61  |0.57   | 0.61  | 0.58  |0.43   | NULL  |
+| XGBoost             | 0.60  |0.57   | 0.60  | 0.58  |0.42   | NULL  |
 
 ## Observations
 | Model | Observation |
 |-------|-------------|
 | Logistic Regression | Performs well with linear seperability, stable metrics |
-| Decision Tree       | slightly lower accuracy, prone to overfitting |
+| Decision Tree       | slightly better accuracy, prone to overfitting |
 | kNN                 | Balanced but sensitive to choice of k and scaling |
 | Naive Bayes         | fast and simple, assumes feature indepedence |
 | Random Forest       | strong ensemble, robust against overfit, better accuracy |
