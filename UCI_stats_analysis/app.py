@@ -28,13 +28,14 @@ if uploaded_file:
         elif model_choice == "Decision Tree":
             model, metrics, X_test, y_test = decision_tree.run_decision_tree(df, target)
         elif model_choice == "kNN":
-            model, metrics = knn.run_knn(df, target)
+            model, metrics, X_test, y_test = knn.run_knn(df, target)
+	    
         elif model_choice == "Naive Bayes":
-            model, metrics = naive_bayes.run_naive_bayes(df, target)
+            model, metrics,  X_test, y_test  = naive_bayes.run_naive_bayes(df, target)
         elif model_choice == "Random Forest":
-            model, metrics = random_forest.run_random_forest(df, target)
+            model, metrics,  X_test, y_test = random_forest.run_random_forest(df, target)
         elif model_choice == "XGBoost":
-            model, metrics = xgboost_model.run_xgboost(df, target)
+            model, metrics,  X_test, y_test = xgboost_model.run_xgboost(df, target)
 
         # c. Display evaluation metrics
         st.write("### Evaluation Metrics")
