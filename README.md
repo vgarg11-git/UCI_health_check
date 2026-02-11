@@ -19,12 +19,12 @@ Chosen dataset: UCI Heart Disease Dataset
 ## Evaluation Metrics
 | Model | Accuracy | AUC | Precision | Recall | F1 | MCC |
 |-------|----------|-----|-----------|--------|----|-----|
-| Logistic Regression | 0.57  |0.50   | 0.57  | 0.53  |0.37   |  NULL |
-| Decision Tree       | 0.59  |0.52   | 0.59  | 0.54  |0.40   | NULL  |
-| kNN                 | 0.53  |0.46   | 0.53  | 0.47  |0.30   | NULL  |
-| Naive Bayes         | 0.47  |0.69   | 0.47  | 0.51  |0.36   | NULL  |
-| Random Forest       | 0.61  |0.57   | 0.61  | 0.58  |0.43   | NULL  |
-| XGBoost             | 0.60  |0.57   | 0.60  | 0.58  |0.42   | NULL  |
+| Logistic Regression | 0.57  | NULL |0.50   | 0.57  | 0.53  |0.37   | 
+| Decision Tree       | 0.59  | NULL |0.52   | 0.59  | 0.54  |0.40   |
+| kNN                 | 0.53  | NULL |0.46   | 0.53  | 0.47  |0.30   | 
+| Naive Bayes         | 0.47  | NULL |0.69   | 0.47  | 0.51  |0.36   | 
+| Random Forest       | 0.61  | NULL |0.57   | 0.61  | 0.58  |0.43   | 
+| XGBoost             | 0.60  | NULL |0.57   | 0.60  | 0.58  |0.42   | 
 
 ## Observations
 | Model | Observation |
