@@ -14,14 +14,6 @@ if uploaded_file:
     df = pd.read_csv(uploaded_file)
     st.write("### Dataset Preview")
     st.dataframe(df.head())
-elif git_url:
-    try:
-        response = requests.get(git_url)
-        response.raise_for_status()
-        df = pd.read_csv(io.StringIO(response.text))
-        st.success("CSV downloaded successfully from Git!")
-    except Exception as e:
-        st.error(f"Error downloading CSV: {e}")
 
     # Select target column
     target = st.selectbox("Select Target Column", df.columns)
@@ -69,6 +61,7 @@ elif git_url:
         report = classification_report(y_test, y_pred)
 
         st.text(report)
+
 
 
 
